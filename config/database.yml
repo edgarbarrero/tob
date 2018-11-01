@@ -81,5 +81,3 @@ test:
 production:
   <<: *default
   database: tob_production
-  username: tob
-  password: <%= ENV['TOB_DATABASE_PASSWORD'] %>
