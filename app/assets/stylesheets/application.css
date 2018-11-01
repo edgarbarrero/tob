@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+.btn-custom {
+  margin-bottom: 10px !important;
+}

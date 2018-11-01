@@ -4,17 +4,14 @@ class ColourController < ApplicationController
   before_action :set_colour
 
   def index
-    colour = Colour.first.name
     respond_to do |format|
-      format.json { render json: { colour: colour } }
+      format.json { render json: { colour: @colour.name } }
     end
   end
 
-  def edit
-  end
-
   def update
-
+    @colour.update_attribute(:name, params[:name])
+    redirect_to edit_colour_path(@colour)
   end
 
   private

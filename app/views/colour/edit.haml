@@ -1,0 +1,17 @@
+.row
+  .col-sm-12
+    %h1 Tu Otra Bonita
+    %span Mobile Colour Controller
+%br
+%br
+.row
+  .col-sm-12
+    = button_to 'BEFORE SHOW', colour_path(@colour, name: 'before_show'), method: :patch, class: "btn btn-default btn-custom btn-lg", style: "width: 100%"
+  .col-sm-12
+    = button_to 'blue', colour_path(@colour, name: 'blue'), method: :patch, class: "btn btn-default btn-custom btn-lg", style: "width: 100%; background: blue"
+  .col-sm-12
+    = button_to 'red', colour_path(@colour, name: 'red'), method: :patch, class: "btn btn-default btn-custom btn-lg", style: "width: 100%; background: red"
+  .col-sm-12
+    = button_to 'green', colour_path(@colour, name: 'green'), method: :patch, class: "btn btn-default btn-custom btn-lg", style: "width: 100%; background: green"
+  .col-sm-12
+    = button_to 'AFTER SHOW', colour_path(@colour, name: 'after_show'), method: :patch, class: "btn btn-default btn-custom btn-lg", style: "width: 100%"

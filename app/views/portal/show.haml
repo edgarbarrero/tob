@@ -1,0 +1,52 @@
+#before_show
+  .row
+    .col-sm-12.text-canter
+      %h3{style: "text-align: center"} El show dará comienzo en breve...
+    .col-sm-12
+      = image_tag 'verdad_o_atrevimiento.jpeg', style: 'width: 100%'
+#show
+  .row
+    .col-sm-12.text-canter
+      %h3{style: "text-align: center"} ¡¡¡ Levtanta tu móvil !!!
+
+#after_show
+  .row
+    .col-sm-12.text-canter
+      %h3{style: "text-align: center"} Muchas gracias boniter@s
+    .col-sm-12
+      = image_tag 'verdad_o_atrevimiento.jpeg', style: 'width: 100%'
+
+
+:coffeescript
+  set_show_status =(colour) ->
+    if colour is 'before_show'
+      $('body').css('background-color', 'white')
+      $('#before_show').show()
+      $('#show').hide()
+      $('#after_show').hide()
+    else if colour is 'after_show'
+      $('body').css('background-color', 'white')
+      $('#before_show').hide()
+      $('#show').hide()
+      $('#after_show').show()
+    else
+      $('body').css('background-color', colour)
+      $('#before_show').hide()
+      $('#show').show()
+      $('#after_show').hide()
+
+  get_colour = ->
+    setInterval (->
+      $.ajax
+        dataType: 'json',
+        url: '/colour.json',
+        success: (data) ->
+          set_show_status(data.colour)
+          return
+      return
+    ), 1000
+
+
+  $(document).ready ->
+    get_colour()
+    return
