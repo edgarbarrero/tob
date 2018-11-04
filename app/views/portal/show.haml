@@ -50,4 +50,15 @@
 
   $(document).ready ->
     get_colour()
+    noSleep = new NoSleep
+    # Enable wake lock.
+    # (must be wrapped in a user input event handler e.g. a mouse or touch handler)
+
+    enableNoSleep = ->
+      noSleep.enable()
+      document.removeEventListener 'click', enableNoSleep, false
+      return
+
+    document.addEventListener 'click', enableNoSleep, false
+
     return
