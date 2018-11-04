@@ -1,18 +1,23 @@
-#before_show
+#init_show
   .row
     .col-sm-12.text-center
-      %h1{style: "text-align: center"} Toca la pantalla
+      %h1{style: "text-align: center"} Toca la pantalla para empezar
     .col-sm-12
       = image_tag 'verdad_o_atrevimiento.png', style: 'width: 100%'
-      %h3{style: "text-align: center, margin-bottom: 300px"} El show dará comienzo en breve...
 
-#show
+#before_show{display: none}
   .row
     .col-sm-12.text-center
-      %h2{style: "text-align: center; margin-top: 300px; margin-bottom: 300px"} Tu Otra Bonita
-      %h2{style: "text-align: center"} ¡¡¡ Levtanta tu móvil !!!
+      %h3{style: "text-align: center"} El show dará comienzo en breve...
+      = image_tag 'verdad_o_atrevimiento.png', style: 'width: 100%'
 
-#after_show
+#show{display: none}
+  .row
+    .col-sm-12.text-center
+      %h2{style: "text-align: center; margin-top: 300px"} Tu Otra Bonita
+      %h2{style: "text-align: center; margin-bottom: 300px"} ¡¡¡ Levtanta tu móvil !!!
+
+#after_show{display: none}
   .row
     .col-sm-12.text-center
       %h3{style: "text-align: center; margin-bottom: 300px"} Muchas gracias boniter@s
@@ -23,16 +28,19 @@
   set_show_status =(colour) ->
     if colour is 'before_show'
       $('body').css('background-color', 'white')
+      $('#init_show').hide()
       $('#before_show').show()
       $('#show').hide()
       $('#after_show').hide()
     else if colour is 'after_show'
       $('body').css('background-color', 'white')
+      $('#init_show').hide()
       $('#before_show').hide()
       $('#show').hide()
       $('#after_show').show()
     else
       $('body').css('background-color', colour)
+      $('#init_show').hide()
       $('#before_show').hide()
       $('#show').show()
       $('#after_show').hide()
