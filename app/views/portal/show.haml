@@ -17,8 +17,6 @@
     .col-sm-12
       = image_tag 'verdad_o_atrevimiento.png', style: 'width: 100%'
 
-%button{id: 'fake_button'} EMPEZAR
-
 :coffeescript
   set_show_status =(colour) ->
     if colour is 'before_show'
@@ -50,16 +48,16 @@
 
 
   $(document).ready ->
-    get_colour()
     noSleep = new NoSleep
     # Enable wake lock.
     # (must be wrapped in a user input event handler e.g. a mouse or touch handler)
 
     enableNoSleep = ->
+      get_colour()
+      alert 'aaaaa'
       noSleep.enable()
-      alert "hola"
-      $('#fake_button').removeEventListener 'click', enableNoSleep, false
+      document.removeEventListener 'click', enableNoSleep, false
       return
 
-    $('#fake_button').addEventListener 'click', enableNoSleep, false
+    document.addEventListener 'click', enableNoSleep, false
     return
