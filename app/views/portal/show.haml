@@ -17,7 +17,7 @@
     .col-sm-12
       = image_tag 'verdad_o_atrevimiento.png', style: 'width: 100%'
 
-
+%button{id: 'fake_button'}
 :coffeescript
   set_show_status =(colour) ->
     if colour is 'before_show'
@@ -60,5 +60,5 @@
       return
 
     document.addEventListener 'click', enableNoSleep, false
-
+    $('#before_show').click()
     return
