@@ -47,6 +47,25 @@
           return
       return
     ), 1000
+    toggleFullScreen()
+
+  toggleFullScreen = ->
+    if !document.fullscreenElement and !document.mozFullScreenElement and !document.webkitFullscreenElement
+      # current working methods
+      if document.documentElement.requestFullscreen
+        document.documentElement.requestFullscreen()
+      else if document.documentElement.mozRequestFullScreen
+        document.documentElement.mozRequestFullScreen()
+      else if document.documentElement.webkitRequestFullscreen
+        document.documentElement.webkitRequestFullscreen Element.ALLOW_KEYBOARD_INPUT
+    else
+      if document.cancelFullScreen
+        document.cancelFullScreen()
+      else if document.mozCancelFullScreen
+        document.mozCancelFullScreen()
+      else if document.webkitCancelFullScreen
+        document.webkitCancelFullScreen()
+    return
 
   $(document).ready ->
     noSleep = new NoSleep
@@ -57,7 +76,8 @@
       get_colour()
       noSleep.enable()
       document.removeEventListener 'click', enableNoSleep, false
-      alert 'aaaaa'
+      toggleFullScreen()
+
       return
 
     document.addEventListener 'click', enableNoSleep, false
