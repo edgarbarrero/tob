@@ -1,9 +1,11 @@
 #before_show
   .row
     .col-sm-12.text-center
-      %h3{style: "text-align: center"} El show dará comienzo en breve...
+      %h1{style: "text-align: center"} Toca la pantalla
     .col-sm-12
       = image_tag 'verdad_o_atrevimiento.png', style: 'width: 100%'
+      %h3{style: "text-align: center"} El show dará comienzo en breve...
+
 #show
   .row
     .col-sm-12.text-center
@@ -46,6 +48,23 @@
       return
     ), 1000
 
+  toggleFullScreen = ->
+    if !document.fullscreenElement and !document.mozFullScreenElement and !document.webkitFullscreenElement
+      # current working methods
+      if document.documentElement.requestFullscreen
+        document.documentElement.requestFullscreen()
+      else if document.documentElement.mozRequestFullScreen
+        document.documentElement.mozRequestFullScreen()
+      else if document.documentElement.webkitRequestFullscreen
+        document.documentElement.webkitRequestFullscreen Element.ALLOW_KEYBOARD_INPUT
+    else
+      if document.cancelFullScreen
+        document.cancelFullScreen()
+      else if document.mozCancelFullScreen
+        document.mozCancelFullScreen()
+      else if document.webkitCancelFullScreen
+        document.webkitCancelFullScreen()
+    return
 
   $(document).ready ->
     noSleep = new NoSleep
@@ -54,9 +73,10 @@
 
     enableNoSleep = ->
       get_colour()
-      alert 'aaaaa'
+      toggleFullScreen()
       noSleep.enable()
       document.removeEventListener 'click', enableNoSleep, false
+      alert 'aaaaa'
       return
 
     document.addEventListener 'click', enableNoSleep, false
