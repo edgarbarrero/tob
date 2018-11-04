@@ -5,7 +5,12 @@ class ColourController < ApplicationController
 
   def index
     respond_to do |format|
-      format.json { render json: { colour: @colour.name } }
+      colour = if @colour.name == 'flash'
+                rand(10) > 5 ? 'black' : 'white'
+               else
+                 @colour.name
+               end
+      format.json { render json: { colour: colour } }
     end
   end
 

@@ -54,7 +54,12 @@
           set_show_status(data.colour)
           return
       return
-    ), 1000
+    ), 500
+    $('body').css('background-color', 'white')
+    $('#init_show').hide()
+    $('#before_show').show()
+    $('#show').hide()
+    $('#after_show').hide()
     toggleFullScreen()
 
   toggleFullScreen = ->
