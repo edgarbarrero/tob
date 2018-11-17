@@ -1,27 +1,19 @@
 # frozen_string_literal: true
 class ColourController < ApplicationController
 
-  before_action :set_colour
-
-  def index
+  def show
     respond_to do |format|
-      colour = if @colour.name == 'flash'
-                rand(10) > 5 ? 'black' : 'white'
+      colour = if Colour.current == 'flash'
+                 rand(10) > 5 ? 'black' : 'white'
                else
-                 @colour.name
+                 Colour.current
                end
       format.json { render json: { colour: colour } }
     end
   end
 
   def update
-    @colour.update_attribute(:name, params[:name])
-    redirect_to edit_colour_path(@colour)
-  end
-
-  private
-
-  def set_colour
-    @colour = Colour.first
+    Colour.current = params[:current]
+    redirect_to '/colour/edit'
   end
 end

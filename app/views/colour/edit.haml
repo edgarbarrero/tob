@@ -6,15 +6,15 @@
 %br
 .row
   .col-sm-12
-    = button_to 'BEFORE SHOW', colour_path(@colour, name: 'before_show'), method: :patch, class: "btn btn-default btn-custom btn-lg", style: "width: 100%"
+    = button_to 'BEFORE SHOW', '/colour?current=before_show', method: :patch, class: "btn btn-default btn-custom btn-lg", style: "width: 100%"
   .col-sm-12
-    = button_to 'blue', colour_path(@colour, name: 'blue'), method: :patch, class: "btn btn-default btn-custom btn-lg", style: "width: 100%; background: blue"
+    = button_to 'blue', '/colour?current=blue', method: :patch, class: "btn btn-default btn-custom btn-lg", style: "width: 100%; background: blue"
   .col-sm-12
-    = button_to 'red', colour_path(@colour, name: 'red'), method: :patch, class: "btn btn-default btn-custom btn-lg", style: "width: 100%; background: red"
+    = button_to 'red', '/colour?current=red', method: :patch, class: "btn btn-default btn-custom btn-lg", style: "width: 100%; background: red"
   .col-sm-12
-    = button_to 'green', colour_path(@colour, name: 'green'), method: :patch, class: "btn btn-default btn-custom btn-lg", style: "width: 100%; background: green"
+    = button_to 'green', '/colour?current=green', method: :patch, class: "btn btn-default btn-custom btn-lg", style: "width: 100%; background: green"
   .col-sm-12
-    = button_to 'flash', colour_path(@colour, name: 'flash'), method: :patch, class: "btn btn-default btn-custom btn-lg", style: "width: 100%; background: black"
+    = button_to 'flash', '/colour?current=flash', method: :patch, class: "btn btn-default btn-custom btn-lg", style: "width: 100%; background: black"
 
   .col-sm-12
-    = button_to 'AFTER SHOW', colour_path(@colour, name: 'after_show'), method: :patch, class: "btn btn-default btn-custom btn-lg", style: "width: 100%"
+    = button_to 'AFTER SHOW', '/colour?current=after_show', method: :patch, class: "btn btn-default btn-custom btn-lg", style: "width: 100%"
